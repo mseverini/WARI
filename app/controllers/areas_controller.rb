@@ -4,7 +4,7 @@ class AreasController < ApplicationController
   # GET /areas
   # GET /areas.json
   def index
-    @areas = Area.all
+    @areas = Area.where(parent:nil)
   end
 
   # GET /areas/1

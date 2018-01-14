@@ -24,8 +24,11 @@ class BoltsController < ApplicationController
   # POST /bolts
   # POST /bolts.json
   def create
+    if bolt_params.number_of_bolts
+      byebug
+    else
     @bolt = Bolt.new(bolt_params)
-
+    end
     respond_to do |format|
       if @bolt.save
         format.html { redirect_to @bolt, notice: 'Bolt was successfully created.' }

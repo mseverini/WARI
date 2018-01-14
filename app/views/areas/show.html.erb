@@ -1,19 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @area.name %>
-</p>
+<% if @area.children.present? %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Year established</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Location:</strong>
-  <%= @area.location %>
-</p>
+  <tbody>
+    <% @area.children.each do |area| %>
+      <tr>
+        <td><%= link_to area.name, area %></td>
+        <td><%= area.year_established %></td>
+        <td><%= link_to 'Edit', edit_area_path(area) %></td>
+        <td><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%else%>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Area</th>
+      <th>Protection type</th>
+      <th>Pitches</th>
+      <th>Picture</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Year established:</strong>
-  <%= @area.year_established %>
-</p>
+  <tbody>
+    <% @area.climbing_routes&.each do |climbing_route| %>
+      <tr>
+        <td><%= link_to climbing_route.name, climbing_route  %></td>
+        <td><%= climbing_route.area.name %></td>
+        <td><%= climbing_route.protection_type %></td>
+        <td><%= climbing_route.pitches %></td>
+        <td><%= climbing_route.picture %></td>
+        <td><%= link_to 'Destroy', climbing_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_area_path(@area) %> |
-<%= link_to 'Back', areas_path %>
+<%end %>
+
+
+<%= link_to 'Edit', edit_area_path(@area) %>

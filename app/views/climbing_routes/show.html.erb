@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @climbing_route.name %>
-</p>
-
+<h1><%= @climbing_route.name %></h1>
 <p>
   <strong>Area:</strong>
-  <%= @climbing_route.area %>
+  <%= @climbing_route.area.name %>
 </p>
 
 <p>
@@ -20,10 +15,38 @@
   <%= @climbing_route.pitches %>
 </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @climbing_route.picture %>
-</p>
+<% if @climbing_route.bolts.present? %>
+<h1>Bolts</h1>
 
-<%= link_to 'Edit', edit_climbing_route_path(@climbing_route) %> |
-<%= link_to 'Back', climbing_routes_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Bolt type</th>
+      <th>Year placed</th>
+      <th>Pitch</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @climbing_route.bolts.each do |bolt| %>
+      <tr>
+        <td><%= bolt.number %></td>
+        <td><%= bolt.bolt_type %></td>
+        <td><%= bolt.year_placed %></td>
+        <td><%= bolt.pitch %></td>
+        <td><%= link_to 'Destroy', bolt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <%= form_for :bolt do |f| %>
+    Number of bolts: <%= f.text_field :number_of_bolts %><br />
+    Type of bolts used: <%= f.text_field :bolt_type %><br />
+    Year Placed: <%= f.text_field :year_placed, value: Time.current.year %> <br />
+    <% f.text_field  :climbing_route, value: @climbing_route %><br />
+  <%= f.submit %>
+<% end %>
+<% end %>
