@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number_of_bolts: 1
+  chain_type: MyString
+  bolt_type: MyString
+  year_placed: 1
+  climbing_route: one
+  pitch: 1
+
+two:
+  number_of_bolts: 1
+  chain_type: MyString
+  bolt_type: MyString
+  year_placed: 1
+  climbing_route: two
+  pitch: 1

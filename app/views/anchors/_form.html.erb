@@ -1,0 +1,47 @@
+<%= form_with(model: anchor, local: true) do |form| %>
+  <% if anchor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(anchor.errors.count, "error") %> prohibited this anchor from being saved:</h2>
+
+      <ul>
+      <% anchor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number_of_bolts %>
+    <%= form.number_field :number_of_bolts, id: :anchor_number_of_bolts %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chain_type %>
+    <%= form.text_field :chain_type, id: :anchor_chain_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bolt_type %>
+    <%= form.text_field :bolt_type, id: :anchor_bolt_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_placed %>
+    <%= form.number_field :year_placed, id: :anchor_year_placed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :climbing_route_id %>
+    <%= form.text_field :climbing_route_id, id: :anchor_climbing_route_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pitch %>
+    <%= form.number_field :pitch, id: :anchor_pitch %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

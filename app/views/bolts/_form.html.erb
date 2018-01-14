@@ -1,0 +1,42 @@
+<%= form_with(model: bolt, local: true) do |form| %>
+  <% if bolt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bolt.errors.count, "error") %> prohibited this bolt from being saved:</h2>
+
+      <ul>
+      <% bolt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number, id: :bolt_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bolt_type %>
+    <%= form.text_field :bolt_type, id: :bolt_bolt_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_placed %>
+    <%= form.number_field :year_placed, id: :bolt_year_placed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :climbing_route_id %>
+    <%= form.text_field :climbing_route_id, id: :bolt_climbing_route_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pitch %>
+    <%= form.number_field :pitch, id: :bolt_pitch %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

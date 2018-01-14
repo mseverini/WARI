@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bolts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Bolt type</th>
+      <th>Year placed</th>
+      <th>Climbing route</th>
+      <th>Pitch</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bolts.each do |bolt| %>
+      <tr>
+        <td><%= bolt.number %></td>
+        <td><%= bolt.bolt_type %></td>
+        <td><%= bolt.year_placed %></td>
+        <td><%= bolt.climbing_route %></td>
+        <td><%= bolt.pitch %></td>
+        <td><%= link_to 'Show', bolt %></td>
+        <td><%= link_to 'Edit', edit_bolt_path(bolt) %></td>
+        <td><%= link_to 'Destroy', bolt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bolt', new_bolt_path %>

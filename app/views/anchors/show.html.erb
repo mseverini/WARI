@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number of bolts:</strong>
+  <%= @anchor.number_of_bolts %>
+</p>
+
+<p>
+  <strong>Chain type:</strong>
+  <%= @anchor.chain_type %>
+</p>
+
+<p>
+  <strong>Bolt type:</strong>
+  <%= @anchor.bolt_type %>
+</p>
+
+<p>
+  <strong>Year placed:</strong>
+  <%= @anchor.year_placed %>
+</p>
+
+<p>
+  <strong>Climbing route:</strong>
+  <%= @anchor.climbing_route %>
+</p>
+
+<p>
+  <strong>Pitch:</strong>
+  <%= @anchor.pitch %>
+</p>
+
+<%= link_to 'Edit', edit_anchor_path(@anchor) %> |
+<%= link_to 'Back', anchors_path %>

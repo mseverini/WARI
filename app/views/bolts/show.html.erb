@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @bolt.number %>
+</p>
+
+<p>
+  <strong>Bolt type:</strong>
+  <%= @bolt.bolt_type %>
+</p>
+
+<p>
+  <strong>Year placed:</strong>
+  <%= @bolt.year_placed %>
+</p>
+
+<p>
+  <strong>Climbing route:</strong>
+  <%= @bolt.climbing_route %>
+</p>
+
+<p>
+  <strong>Pitch:</strong>
+  <%= @bolt.pitch %>
+</p>
+
+<%= link_to 'Edit', edit_bolt_path(@bolt) %> |
+<%= link_to 'Back', bolts_path %>
