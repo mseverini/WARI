@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @climbing_route.name %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @climbing_route.area %>
+</p>
+
+<p>
+  <strong>Protection type:</strong>
+  <%= @climbing_route.protection_type %>
+</p>
+
+<p>
+  <strong>Pitches:</strong>
+  <%= @climbing_route.pitches %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @climbing_route.picture %>
+</p>
+
+<%= link_to 'Edit', edit_climbing_route_path(@climbing_route) %> |
+<%= link_to 'Back', climbing_routes_path %>

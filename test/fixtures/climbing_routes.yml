@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  area: one
+  protection_type: MyString
+  pitches: 1
+  picture: MyString
+
+two:
+  name: MyString
+  area: two
+  protection_type: MyString
+  pitches: 1
+  picture: MyString

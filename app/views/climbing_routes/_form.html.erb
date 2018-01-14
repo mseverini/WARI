@@ -1,0 +1,42 @@
+<%= form_with(model: climbing_route, local: true) do |form| %>
+  <% if climbing_route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(climbing_route.errors.count, "error") %> prohibited this climbing_route from being saved:</h2>
+
+      <ul>
+      <% climbing_route.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :climbing_route_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area_id %>
+    <%= form.text_field :area_id, id: :climbing_route_area_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :protection_type %>
+    <%= form.text_field :protection_type, id: :climbing_route_protection_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pitches %>
+    <%= form.number_field :pitches, id: :climbing_route_pitches %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture %>
+    <%= form.text_field :picture, id: :climbing_route_picture %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
