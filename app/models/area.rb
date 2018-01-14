@@ -1,3 +1,4 @@
 class Area < ApplicationRecord
-  belongs_to :location
+  has_many :children, class_name: "Area", foreign_key: "parent_id"
+  belongs_to :parent, class_name: "Area"
 end

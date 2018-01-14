@@ -10,18 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180114004738) do
+ActiveRecord::Schema.define(version: 20180114182143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "anchors", force: :cascade do |t|
+    t.integer "number_of_bolts"
+    t.string "chain_type"
+    t.string "bolt_type"
+    t.integer "year_placed"
+    t.bigint "climbing_route_id"
+    t.integer "pitch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["climbing_route_id"], name: "index_anchors_on_climbing_route_id"
+  end
+
   create_table "areas", force: :cascade do |t|
     t.string "name"
-    t.bigint "location_id"
     t.integer "year_established"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_areas_on_location_id"
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_areas_on_parent_id"
+  end
+
+  create_table "bolts", force: :cascade do |t|
+    t.integer "number"
+    t.string "bolt_type"
+    t.integer "year_placed"
+    t.bigint "climbing_route_id"
+    t.integer "pitch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["climbing_route_id"], name: "index_bolts_on_climbing_route_id"
   end
 
   create_table "climbing_routes", force: :cascade do |t|
@@ -53,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180114004738) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
-  add_foreign_key "areas", "locations"
+  add_foreign_key "anchors", "climbing_routes"
+  add_foreign_key "bolts", "climbing_routes"
   add_foreign_key "climbing_routes", "areas"
 end
