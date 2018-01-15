@@ -26,6 +26,7 @@
       <th>Year placed</th>
       <th>Pitch</th>
       <th colspan="1"></th>
+      <th>Flag as a problem</th>
     </tr>
   </thead>
 
@@ -37,16 +38,17 @@
         <td><%= bolt.year_placed %></td>
         <td><%= bolt.pitch %></td>
         <td><%= link_to 'Destroy', bolt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><input type="checkbox"/></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <% else %>
-  <%= form_for :bolt do |f| %>
-    Number of bolts: <%= f.text_field :number_of_bolts %><br />
-    Type of bolts used: <%= f.text_field :bolt_type %><br />
-    Year Placed: <%= f.text_field :year_placed, value: Time.current.year %> <br />
-    <% f.text_field  :climbing_route, value: @climbing_route %><br />
-  <%= f.submit %>
+  <%= form_tag( {:controller => 'climbing_routes', :action => 'create_bolts'}, :method => 'post' ) do |f| %>
+    <%= number_field_tag("Number of Bolts") %>
+    <%= text_field_tag("type of bolts used") %>
+    <%= text_field_tag("year placed", DateTime.now.year) %>
+    <%= hidden_field("climbing route", @climbing_route.id) %>
+  <%= submit_tag('generate bolts') %>
 <% end %>
 <% end %>

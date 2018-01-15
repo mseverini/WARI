@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :anchors
   resources :bolts
-  resources :climbing_routes
+  resources :climbing_routes do
+    collection do
+      post 'create_bolts'
+    end
+  end
   resources :areas
 
   root 'areas#index'

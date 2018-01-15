@@ -37,6 +37,14 @@ class ClimbingRoutesController < ApplicationController
     end
   end
 
+  def create_bolts
+    incoming_route = ClimbingRoute.find(params["climbing route"].keys[0])
+    params['Number of Bolts'].to_i.times do |n|
+      Bolt.create!(number: (n+1), bolt_type: params["type of bolts used"], year_placed: params["year placed"], climbing_route: incoming_route)
+    end
+    redirect_to action: "show", id: params["climbing route"].keys[0]
+  end
+
   # PATCH/PUT /climbing_routes/1
   # PATCH/PUT /climbing_routes/1.json
   def update
