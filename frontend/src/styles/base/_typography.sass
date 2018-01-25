@@ -1,0 +1,59 @@
+/*-----------------------------
+/*-----------------------------
+ * Typography Settings
+ -----------------------------*/
+body
+  font-family: 'Source Sans Pro', sans-serif
+  background-color: #eee
+  margin: 0 auto
+  color: $base_font_color
+
+h1, h2, h3, h4, h5, h6
+  // text-align: center
+  margin-top: 10px
+  margin-bottom: 10px
+
+label
+  display: block
+a
+  color: inherit
+
+input
+  display: inline-flex
+  width: 300px
+  outline: none
+  border: solid 1px #ccc
+  border-radius: 2px
+  box-sizing: border-box
+  padding: 10px
+
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder
+  color: #ccc
+input:focus
+  color: $base_font_color
+
+button
+  background-color: #fff
+  width: 100px
+  height: 100px
+  outline: none
+  border: none
+  border-radius: 50%
+  cursor: pointer
+  transition: all 1s ease 0s
+  text-transform: uppercase
+  color: #888
+  &:hover
+    background-color: #ddd
+  &:disabled
+    cursor: auto
+
+strong
+  display: block
+  margin-bottom: 10px
+
+main
+  width: 100%
+  max-width: 600px
+  margin: 0 auto
+  padding: 20px
