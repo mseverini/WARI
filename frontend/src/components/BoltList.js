@@ -8,7 +8,7 @@ const mapBolts = (bolts) => {
 
 const BoltList = ({ bolts }) =>
   <div>
-    <table className="c-todo__list">
+    <table className="c__list">
       <thead />
       <tbody>
         {mapBolts(bolts)}

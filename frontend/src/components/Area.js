@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 
 const Area = ({ area }) =>
   <tr>
-    <td className="c-todo__list_item" >
-      <Link to={"/Area/"+area.id}>{area.name}</Link>
+    <td>
+      <Link to={"/Area/"+area.id} className="c__list_item" >{area.name}</Link>
     </td>
   </tr>
 

@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 
 const Route = ({ route }) =>
   <tr>
-    <td className="c-todo__list_item" >
-      <Link to={"/Route/"+route.id}>{route.name}</Link>
+    <td>
+      <Link to={"/Route/"+route.id} className="c__list_item">{route.name}</Link>
     </td>
   </tr>
 

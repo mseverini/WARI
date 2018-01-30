@@ -12,7 +12,7 @@ const mapRoutes = (routes) => {
 }
 
 const AreaList = ({ areas, routes }) =>
-  <table className="c-todo__list">
+  <table className="c__list">
     <thead />
     <tbody>
       {mapAreas(areas).concat(mapRoutes(routes))}

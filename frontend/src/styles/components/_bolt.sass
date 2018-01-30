@@ -1,0 +1,12 @@
+.rating
+  unicode-bidi: bidi-override
+  direction: rtl
+
+
+.star
+  display: inline-block
+  position: relative
+  &:hover:before,
+  &:hover~&:before
+    content: "\2605"
+    position: absolute
