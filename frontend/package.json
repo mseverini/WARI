@@ -13,8 +13,10 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-dropzone": "^4.2.7",
     "recompose": "^0.26.0"
   },
   "devDependencies": {

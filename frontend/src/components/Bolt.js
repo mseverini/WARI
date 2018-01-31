@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Dropzone from 'react-dropzone'
+
 
 const Bolt = ({ bolt }) =>
   <tr>
-    <td className="bolt" >
-      {bolt.position}
+    <td >
+      <div className="c-button">
+      Bolt {bolt.position}
+      </div>
       <span className="rating">
         <span className="star" href="#">☆</span>
         <span className="star" href="#">☆</span>

@@ -6,16 +6,15 @@ const mapBolts = (bolts) => {
   return bolts.map(bolt => <Bolt bolt={bolt} />);
 }
 
-const BoltList = ({ bolts }) =>
+const BoltList = ({ bolts, route }) =>
   <div>
+    <h2>Route.name </h2>
     <table className="c__list">
       <thead />
       <tbody>
         {mapBolts(bolts)}
       </tbody>
     </table>
-    <Link >replaced</Link>
-    <Link> removed </Link>
   </div>
 
 export default BoltList
