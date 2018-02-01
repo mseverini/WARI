@@ -8,13 +8,8 @@ const mapBolts = (bolts) => {
 
 const BoltList = ({ bolts, route }) =>
   <div>
-    <h2>Route.name </h2>
-    <table className="c__list">
-      <thead />
-      <tbody>
+    <h2>route.name </h2>
         {mapBolts(bolts)}
-      </tbody>
-    </table>
   </div>
 
 export default BoltList
