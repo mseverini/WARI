@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk'
 import areaData from './reducers/areaData'
 import initialState from './data/initialState'
 
-export function configureStore(history, initialState) {
+export function configureStore(history) {
 
     const reducer = combineReducers({
         areaData,

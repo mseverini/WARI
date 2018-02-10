@@ -1,7 +1,7 @@
 {
-  "name": "create-react-redux-app",
+  "name": "WARI",
   "version": "1.0.0",
-  "homepage": "http://yingray.github.io/create-react-redux-app",
+  "proxy": "http://localhost:5100",
   "scripts": {
     "start": "npm run build:css && (npm run watch:css & PORT=4000 react-scripts start)",
     "build": "npm run build:css && react-scripts build",
@@ -13,9 +13,16 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "apollo-client-preset": "^1.0.8",
+    "apollo-link": "^1.0.7",
+    "apollo-link-context": "^1.0.3",
     "bootstrap": "^4.0.0",
     "express-graphql": "^0.6.11",
+    "graphql": "^0.13.0",
+    "graphql-tag": "^2.7.3",
     "react": "^15.6.1",
+    "react-apollo": "^2.0.4",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^15.6.1",
     "react-dropzone": "^4.2.7",
     "recompose": "^0.26.0"
