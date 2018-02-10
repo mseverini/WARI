@@ -3,15 +3,14 @@ import Bolt from './Bolt'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
 
-const listPosts = gql`query {
-  route(id: 7) {
+const listPosts = gql`query RouteQuery($route_id: ID!) {
+  route(id:$route_id){
     name
     bolts{
       ids
     }
   }
 }`
-
 
 const mapBolts = (props) => {
   if(!props.data.loading){

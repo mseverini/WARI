@@ -7,16 +7,8 @@ import { getBoltsFor } from '../actions/routeActions'
 
 const mapStateToProps = state => {
   return {
-    bolts: getBoltsFor(state.routing.locationBeforeTransitions.pathname),
+    route_id: state.routing.locationBeforeTransitions.pathname.replace( /^\D+/g, ''),
   }
 }
 
-const enhance = compose(
-  connect(mapStateToProps),
-  branch(
-    props => props.bolts.length == 0,
-    renderComponent(CreateBolts),
-  ),
-);
-
-export default enhance(BoltList)
+export default connect(mapStateToProps)(BoltList)
