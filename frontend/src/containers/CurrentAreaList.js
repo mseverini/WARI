@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import AreaList from '../components/AreaList'
-import { getSubAreasFor, getRoutesFor } from '../actions/areaAction'
+
 
 const mapStateToProps = state => {
+  const route_area_id = state.routing.locationBeforeTransitions.pathname.replace( /^\D+/g, '')
   return {
-    areas: getSubAreasFor(state.routing.locationBeforeTransitions.pathname),
-    routes: getRoutesFor(state.routing.locationBeforeTransitions.pathname),
+    area_id: route_area_id ? route_area_id : 1,
   }
 }
 

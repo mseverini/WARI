@@ -3,7 +3,7 @@ import Bolt from './Bolt'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
 
-const listPosts = gql`query RouteQuery($route_id: ID!) {
+const listBolts = gql`query RouteQuery($route_id: ID!) {
   route(id:$route_id){
     name
     bolts{
@@ -27,4 +27,4 @@ const BoltList = (props) =>
         {mapBolts(props)}
   </div>
 
-export default graphql(listPosts)(BoltList)
+export default graphql(listBolts)(BoltList)
