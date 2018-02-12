@@ -17,3 +17,21 @@
 /yarn-error.log
 
 .byebug_history
+
+# dependencies
+/forntend/node_modules
+
+# testing
+/forntend/coverage
+
+# production
+/forntend/build
+/forntend/main.css
+
+# misc
+/forntend/.DS_Store
+/forntend/.env
+/forntend/.vscode
+
+npm-debug.log
+/forntend/.idea
