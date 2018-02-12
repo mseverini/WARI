@@ -12,4 +12,12 @@ Types::MutationType = GraphQL::ObjectType.define do
     argument :credentials, Types::AuthProviderCredentialsType
     resolve Mutations::Users::LoginUserMutation.new
   end
+
+  field :createBoltRating, Types::BoltRatingType do
+    description "Sets the user bolt rating"
+    argument :token, !types.String
+    argument :bolt_id, !types.ID
+    argument :rating, !types.String
+    resolve Mutations::BoltRatingMutation.new
+  end
 end
