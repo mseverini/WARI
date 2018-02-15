@@ -2,29 +2,23 @@ import React from 'react'
 import Bolt from './Bolt'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag';
+import CreateBolts from "./CreateBolts"
 
-const listBolts = gql`query RouteQuery($route_id: ID!) {
-  route(id:$route_id){
-    name
-    bolts{
-      ids
+
+const BoltList = (props) => {
+    if(!props.data.loading) {
+      return (
+        <div>
+          <h2>{props.data.route.name} </h2>
+          {
+            props.data.route.bolts == 0 ?
+              <CreateBolts {...props}/> :
+              props.data.route.bolts.map(bolt => <Bolt bolt={bolt} />)
+          }
+        </div>
+      )
     }
-  }
-}`
-
-const mapBolts = (props) => {
-  if(!props.data.loading){
-    return props.data.route.bolts.map(bolt => <Bolt bolt={bolt} />)
-  }
-  else {
-    return <h3>Loading...</h3>
-  }
+    return <h2>...Loading</h2>
 }
 
-const BoltList = (props) =>
-  <div>
-    <h2>{!props.data.loading ? props.data.route.name : null} </h2>
-        {mapBolts(props)}
-  </div>
-
-export default graphql(listBolts)(BoltList)
+export default BoltList

@@ -1,8 +1,17 @@
 import { connect } from 'react-redux'
 import { compose, branch, renderComponent } from 'recompose';
-import CreateBolts from "../components/CreateBolts"
-
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 import BoltList from '../components/BoltList'
+
+const listBolts = gql`query RouteQuery($route_id: ID!) {
+  route(id:$route_id){
+    name
+    bolts{
+      ids
+    }
+  }
+}`
 
 const mapStateToProps = state => {
   return {
@@ -10,4 +19,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(BoltList)
+export default connect(mapStateToProps)(graphql(listBolts)(BoltList))
