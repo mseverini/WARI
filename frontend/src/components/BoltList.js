@@ -6,7 +6,7 @@ import CreateBolts from "./CreateBolts"
 
 
 const BoltList = (props) => {
-    if(!props.data.loading) {
+    if(props.data.loading === false) {
       return (
         <div>
           <h2>{props.data.route.name} </h2>

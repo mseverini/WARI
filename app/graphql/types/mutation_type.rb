@@ -20,4 +20,12 @@ Types::MutationType = GraphQL::ObjectType.define do
     argument :rating, !types.String
     resolve Mutations::BoltRatingMutation.new
   end
+
+  field :createBolts, Types::ClimbingRouteType do
+    description "adds bolts to a route"
+    argument :pitches, !types.Int
+    argument :bolts,  -> { !types[!types.Int] }
+    argument :route_id, !types.ID
+    resolve Mutations::CreateBoltsMutation.new
+  end
 end

@@ -8,7 +8,7 @@ const listBolts = gql`query RouteQuery($route_id: ID!) {
   route(id:$route_id){
     name
     bolts{
-      ids
+      number
     }
   }
 }`
