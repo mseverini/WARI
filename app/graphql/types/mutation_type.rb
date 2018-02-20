@@ -25,6 +25,7 @@ Types::MutationType = GraphQL::ObjectType.define do
     description "adds bolts to a route"
     argument :pitches, !types.Int
     argument :bolts,  -> { !types[!types.Int] }
+    argument :anchors,  -> { !types[!types.Boolean] }
     argument :route_id, !types.ID
     resolve Mutations::CreateBoltsMutation.new
   end

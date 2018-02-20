@@ -3,10 +3,13 @@ import {graphql} from 'react-apollo'
 import gql from "graphql-tag"
 
 const createBoltsMutation = gql`
-mutation CreateBolts($route_id: ID!, $bolts: [Int!]!, $pitches: Int!){
-  createBolts(route_id:$route_id,bolts: $bolts, pitches:$pitches) {
+mutation CreateBolts($route_id: ID!, $bolts: [Int!]!, $anchors: [Boolean!]!, $pitches: Int!){
+  createBolts(route_id:$route_id,bolts: $bolts, anchors: $anchors, pitches:$pitches) {
     bolts{
       number
+    }
+    anchors{
+      pitch
     }
   }
 }`
@@ -17,7 +20,8 @@ class CreateBolts extends React.Component {
     super(props, context);
 
     this.state = {
-      pitches: []
+      pitches: [],
+      anchors: []
     };
   }
 
@@ -25,15 +29,23 @@ class CreateBolts extends React.Component {
     const target = event.target;
 
     this.setState({
-      [ target.name]: Array(parseInt(target.value)).fill(0)
+      pitches: Array(parseInt(target.value)).fill(0),
+      anchors: Array(parseInt(target.value)).fill(false)
     });
   }
 
   handleChange(event) {
     const target = event.target;
 
-    this.state.pitches[target.id] = parseInt(target.value)
+    this.state.pitches[target.id] = target.value
     this.setState({pitches: this.state.pitches})
+  }
+
+  handleAnchorChange(event){
+    const target = event.target;
+
+    this.state.anchors[target.id] = target.checked
+    this.setState({anchors: this.state.anchors})
   }
 
   async handleSubmit(e) {
@@ -43,7 +55,8 @@ class CreateBolts extends React.Component {
       variables: {
         route_id: this.props.route_id,
         bolts: this.state.pitches,
-        pitches: this.state.pitches.length
+        pitches: this.state.pitches.length,
+        anchors: this.state.anchors
       },
     })
 
@@ -54,8 +67,16 @@ class CreateBolts extends React.Component {
     var pitches = this.state.pitches.map((_,i) => {
         return (
           <div key={i}>
-            <label htmlFor={i}>How may bolts are there on pitch {i+1}</label>
-            <input id={i} name="pitches" type="text" onChange={this.handleChange.bind(this)} />
+            <span>
+              Does pitch {i+1} have bolted anchors?
+              <input style={{margin: 20+"px"+ 0, width:40+'px'}} type="checkbox" id={i} onChange={this.handleAnchorChange.bind(this)}/>
+            </span>
+            <br/>
+           <span>
+             How may bolts are there on pitch {i+1}
+             <input style={{width:40+'px'}} id={i} name="pitches" type="text" onChange={this.handleChange.bind(this)} />
+           </span>
+            <br/><br/>
           </div>
         );
       }
@@ -69,7 +90,11 @@ class CreateBolts extends React.Component {
         <input id="pitches" name="pitches" type="text" onChange={this.handlePitchChange.bind(this)} />
 
         {pitches}
-        <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+
+        {pitches.length ?
+          <button onClick={this.handleSubmit.bind(this)}>Submit</button>
+          : null
+        }
       </div>
     )
   }
