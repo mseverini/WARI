@@ -7,8 +7,13 @@ import BoltList from '../components/BoltList'
 const listBolts = gql`query RouteQuery($route_id: ID!) {
   route(id:$route_id){
     name
+    pitches
     bolts{
       number
+      pitch
+    }
+    anchors{
+      pitch
     }
   }
 }`

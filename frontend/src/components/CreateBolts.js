@@ -7,6 +7,7 @@ mutation CreateBolts($route_id: ID!, $bolts: [Int!]!, $anchors: [Boolean!]!, $pi
   createBolts(route_id:$route_id,bolts: $bolts, anchors: $anchors, pitches:$pitches) {
     bolts{
       number
+      pitch
     }
     anchors{
       pitch
@@ -37,7 +38,7 @@ class CreateBolts extends React.Component {
   handleChange(event) {
     const target = event.target;
 
-    this.state.pitches[target.id] = target.value
+    this.state.pitches[target.id] = parseInt(target.value)
     this.setState({pitches: this.state.pitches})
   }
 

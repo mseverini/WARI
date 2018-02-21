@@ -4,7 +4,7 @@ import StarPicker from "./star-picker"
 import { Button, Collapse, Well } from 'react-bootstrap';
 import Collapsible from 'react-collapsible';
 
-class Bolt extends React.Component {
+class Anchor extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -18,7 +18,7 @@ class Bolt extends React.Component {
       <div>
         <Collapsible trigger={(
           <Button className="c-button" onClick={() => this.setState({open: !this.state.open})}>
-            Bolt {this.props.bolt.number + 1}
+             Anchors on pitch {this.props.anchor.pitch + 1}
           </Button>
         )} >
           <div>
@@ -34,4 +34,4 @@ class Bolt extends React.Component {
   }
 }
 
-export default Bolt
+export default Anchor
