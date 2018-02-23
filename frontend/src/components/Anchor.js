@@ -3,6 +3,7 @@ import Dropzone from 'react-dropzone'
 import StarPicker from "./star-picker"
 import { Button, Collapse, Well } from 'react-bootstrap';
 import Collapsible from 'react-collapsible';
+import RatingForm from "./RatingForm"
 
 class Anchor extends React.Component {
   constructor(props, context) {
@@ -21,13 +22,7 @@ class Anchor extends React.Component {
              Anchors on pitch {this.props.anchor.pitch + 1}
           </Button>
         )} >
-          <div>
-            <Well>
-              <StarPicker title={"How did it look to you?"}/>
-              <br/> <br/>
-              <Dropzone > Add a picture! </Dropzone>
-            </Well>
-          </div>
+          <RatingForm/>
         </Collapsible>
       </div>
     )

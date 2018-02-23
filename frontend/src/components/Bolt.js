@@ -1,8 +1,17 @@
 import React from 'react'
-import Dropzone from 'react-dropzone'
-import StarPicker from "./star-picker"
-import { Button, Collapse, Well } from 'react-bootstrap';
-import Collapsible from 'react-collapsible';
+import { Button } from 'react-bootstrap'
+import Collapsible from 'react-collapsible'
+import { graphql } from 'react-apollo'
+
+import gql from 'graphql-tag'
+import RatingForm from "./RatingForm"
+
+const displayRating = gql`query AreaQuery($bolt_id: ID!, $token: String!) {
+  bolt_rating(token: $token, bolt_id: $bolt_id){
+    picture
+    rating
+  }
+}`
 
 class Bolt extends React.Component {
   constructor(props, context) {
@@ -21,17 +30,11 @@ class Bolt extends React.Component {
             Bolt {this.props.bolt.number + 1}
           </Button>
         )} >
-          <div>
-            <Well>
-              <StarPicker title={"How did it look to you?"}/>
-              <br/> <br/>
-              <Dropzone > Add a picture! </Dropzone>
-            </Well>
-          </div>
+          <RatingForm bolt_id={this.props.bolt_id} token={this.props.token} />
         </Collapsible>
       </div>
     )
   }
 }
 
-export default Bolt
+export default graphql(displayRating)(Bolt)

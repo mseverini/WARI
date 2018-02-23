@@ -7,6 +7,15 @@ Types::QueryType = GraphQL::ObjectType.define do
     }
   end
 
+  field :bolt_rating, Types::BoltRatingType do
+    argument :token, !types.String
+    argument :bolt_id, !types.ID
+    resolve ->(obj, args, ctx) {
+      user = User.where(confirmation_token: args['token'])
+      BoltRating.where(user: user, bolt_id: args['bolt_id']).first
+    }
+  end
+
   field :route, Types::ClimbingRouteType do
     argument :id, !types.ID
     resolve ->(obj, args, ctx) {

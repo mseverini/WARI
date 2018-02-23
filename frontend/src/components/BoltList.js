@@ -1,8 +1,6 @@
 import React from 'react'
 import Bolt from './Bolt'
 import Anchor from './Anchor'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag';
 import CreateBolts from "./CreateBolts"
 
 
@@ -13,11 +11,11 @@ function displayPitches(bolts, anchors, pitches) {
   let routeElements = []
   for(let i=0; i < pitches; i++){
     if (anchorIndex < anchors.length && anchors[anchorIndex].pitch == i ){
-      routeElements.push(<Anchor anchor={anchors[anchorIndex]} />)
+      routeElements.push(<Anchor  key={'anchor'+anchorIndex} anchor={anchors[anchorIndex]} />)
       anchorIndex ++
     }
     while(boltNumber < bolts.length && bolts[boltNumber].pitch == i){
-      routeElements.push(<Bolt bolt={bolts[boltNumber]} />)
+      routeElements.push(<Bolt key={'bolt'+boltNumber} bolt={bolts[boltNumber]} bolt_id={bolts[boltNumber].id} token={global.sessionStorage.getItem('token')}/>)
       boltNumber ++
     }
   }

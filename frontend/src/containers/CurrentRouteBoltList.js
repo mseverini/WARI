@@ -9,6 +9,7 @@ const listBolts = gql`query RouteQuery($route_id: ID!) {
     name
     pitches
     bolts{
+      id
       number
       pitch
     }

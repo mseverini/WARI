@@ -5,8 +5,9 @@ class Mutations::BoltRatingMutation
     boltRating = BoltRating.where(user:user, bolt:bolt).first || BoltRating.new
     boltRating.user = user
     boltRating.bolt = bolt
-    boltRating.rating = args[:rating]
-    boltRating.save
+    boltRating.rating = args[:rating] if args[:rating].present?
+    boltRating.picture = args[:picture] if args[:picture].present?
+    boltRating.save!
     boltRating
   end
 end
