@@ -19,7 +19,7 @@ class Anchor extends React.Component {
       <div>
         <Collapsible trigger={(
           <Button className="c-button" onClick={() => this.setState({open: !this.state.open})}>
-             Anchors on pitch {this.props.anchor.pitch + 1}
+             Anchors
           </Button>
         )} >
           <RatingForm/>
