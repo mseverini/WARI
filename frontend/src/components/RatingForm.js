@@ -21,19 +21,19 @@ class RatingForm extends React.Component {
 
     this.state = {
       open: false,
-      picture: this.props.picture
+      picture: props.picture
     };
   }
 
   async onUpload(picture) {
-    this.state.picture = picture
+    this.props.picture = picture
 
     let response = await this.props.mutate({
       variables: {
         bolt_id: this.props.bolt_id,
         token: this.props.token,
         rating: this.state.rating,
-        picture: this.state.picture
+        picture: this.props.picture
       },
     })
   }
@@ -44,7 +44,7 @@ class RatingForm extends React.Component {
         <Well>
           <StarPicker title={"How did it look to you?"}/>
           <br/>
-          <ImageUpload onUpload={this.onUpload.bind(this)} />
+          <ImageUpload onUpload={this.onUpload.bind(this)} picture={this.props.picture}/>
         </Well>
       </div>
     )

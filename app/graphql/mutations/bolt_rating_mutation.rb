@@ -6,7 +6,7 @@ class Mutations::BoltRatingMutation
     boltRating.user = user
     boltRating.bolt = bolt
     boltRating.rating = args[:rating] if args[:rating].present?
-    # boltRating.picture
+    boltRating.picture = args[:picture] if args[:picture].present?
     boltRating.save!
     boltRating
   end
