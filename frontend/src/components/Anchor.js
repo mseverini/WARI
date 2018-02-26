@@ -30,7 +30,12 @@ class Anchor extends React.Component {
             Anchors
           </Button>
         )} >
-          <AnchorRatingForm anchor_id={this.props.anchor_id} token={this.props.token} picture={this.props.data.anchor_rating ? this.props.data.anchor_rating.picture : null}/>
+          <AnchorRatingForm
+            anchor_id={this.props.anchor_id}
+            token={this.props.token}
+            picture={this.props.data.anchor_rating ? this.props.data.anchor_rating.picture : null}
+            rating={this.props.data.anchor_rating ? this.props.data.anchor_rating.rating : null}
+          />
         </Collapsible>
       </div>
     )

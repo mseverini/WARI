@@ -1,10 +1,9 @@
 import React from 'react'
-import StarPicker from "./star-picker"
+import EmojiRater from "./EmojiRater"
 import { Well } from 'react-bootstrap'
 import ImageUpload from './ImageUpload'
 import {graphql} from 'react-apollo'
 import gql from "graphql-tag"
-import Dropzone from 'react-dropzone'
 
 
 const createRatingMutation = gql`
@@ -21,7 +20,8 @@ class AnchorRatingForm extends React.Component {
 
     this.state = {
       open: false,
-      picture: props.picture
+      picture: props.picture,
+      rating: props.rating
     };
   }
 
@@ -32,19 +32,28 @@ class AnchorRatingForm extends React.Component {
       variables: {
         anchor_id: this.props.anchor_id,
         token: this.props.token,
-        rating: this.state.rating,
         picture: picture
       },
     })
   }
 
+  async onRate(rating){
+    this.setState({rating})
+
+    let response = await this.props.mutate({
+      variables: {
+        anchor_id: this.props.anchor_id,
+        token: this.props.token,
+        rating: rating
+      },
+    })
+  }
+
   render() {
-    if(this.state.picture)
-      debugger
     return (
       <div>
         <Well>
-          <StarPicker title={"How did it look to you?"}/>
+          <EmojiRater onRate={this.onRate.bind(this)} rating={this.state.rating ? this.state.rating : this.props.rating}/>
           <br/>
           <ImageUpload onUpload={this.onUpload.bind(this)} picture={this.state.picture ? this.state.picture : this.props.picture}/>
         </Well>

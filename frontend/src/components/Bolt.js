@@ -30,7 +30,12 @@ class Bolt extends React.Component {
             Bolt {this.props.bolt.number + 1}
           </Button>
         )} >
-          <RatingForm bolt_id={this.props.bolt_id} token={this.props.token} picture={this.props.data.bolt_rating ? this.props.data.bolt_rating.picture : null}/>
+          <RatingForm
+            bolt_id={this.props.bolt_id}
+            token={this.props.token}
+            picture={this.props.data.bolt_rating ? this.props.data.bolt_rating.picture : null}
+            rating={this.props.data.bolt_rating ? this.props.data.bolt_rating.rating : null}
+          />
         </Collapsible>
       </div>
     )

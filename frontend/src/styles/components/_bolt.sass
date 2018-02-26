@@ -1,7 +1,8 @@
 .rating
-  unicode-bidi: bidi-override
-  direction: rtl
-
+  //unicode-bidi: bidi-override
+  //direction: rtl
+  height: 50px
+  display: inline-flex
 
 .star
   display: inline-block
@@ -10,6 +11,14 @@
   &:hover~&:before
     content: "\2605"
     position: absolute
+
+.emoji-rating
+  font-size: 25px
+  margin-top: 10px
+  &:hover,
+  &.selected
+    font-size: 40px
+    margin-top: 0
 
 img
   max-width: 250px
