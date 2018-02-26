@@ -30,8 +30,8 @@ class CreateBolts extends React.Component {
     const target = event.target;
 
     this.setState({
-      pitches: Array(parseInt(target.value)).fill(0),
-      anchors: Array(parseInt(target.value)).fill(false)
+      pitches: target.value ? Array(parseInt(target.value)).fill(0) : [],
+      anchors: target.value ? Array(parseInt(target.value)).fill(false) : []
     });
   }
 
@@ -70,7 +70,7 @@ class CreateBolts extends React.Component {
           <div key={i}>
             <span>
               Does pitch {i+1} have bolted anchors?
-              <input style={{margin: 20+"px"+ 0, width:40+'px'}} type="checkbox" id={i} onChange={this.handleAnchorChange.bind(this)}/>
+              <input style={{margin:( 0 + ' ' + 0 + ' ' + 0 + ' ' + 15+"px")}} type="checkbox" id={i} onChange={this.handleAnchorChange.bind(this)}/>
             </span>
             <br/>
            <span>
