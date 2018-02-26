@@ -22,6 +22,15 @@ Types::MutationType = GraphQL::ObjectType.define do
     resolve Mutations::BoltRatingMutation.new
   end
 
+  field :anchorRating, Types::BoltRatingType do
+    description "Sets the user anchor rating"
+    argument :token, !types.String
+    argument :anchor_id, !types.ID
+    argument :rating, types.Int
+    argument :picture, types.String
+    resolve Mutations::AnchorRatingMutation.new
+  end
+
   field :createBolts, Types::ClimbingRouteType do
     description "adds bolts to a route"
     argument :pitches, !types.Int

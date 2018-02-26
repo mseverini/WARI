@@ -1,9 +1,17 @@
 import React from 'react'
-import Dropzone from 'react-dropzone'
-import StarPicker from "./star-picker"
-import { Button, Collapse, Well } from 'react-bootstrap';
-import Collapsible from 'react-collapsible';
-import RatingForm from "./RatingForm"
+import { Button } from 'react-bootstrap'
+import Collapsible from 'react-collapsible'
+import { graphql } from 'react-apollo'
+
+import gql from 'graphql-tag'
+import AnchorRatingForm from "./AnchorRatingForm"
+
+const displayRating = gql`query AreaQuery($anchor_id: ID!, $token: String!) {
+  anchor_rating(token: $token, anchor_id: $anchor_id){
+    picture
+    rating
+  }
+}`
 
 class Anchor extends React.Component {
   constructor(props, context) {
@@ -19,14 +27,15 @@ class Anchor extends React.Component {
       <div>
         <Collapsible trigger={(
           <Button className="c-button" onClick={() => this.setState({open: !this.state.open})}>
-             Anchors
+            Anchors
           </Button>
         )} >
-          <RatingForm/>
+          <AnchorRatingForm anchor_id={this.props.anchor_id} token={this.props.token} picture={this.props.data.anchor_rating ? this.props.data.anchor_rating.picture : null}/>
         </Collapsible>
       </div>
     )
   }
 }
 
-export default Anchor
+export default graphql(displayRating)(Anchor)
+

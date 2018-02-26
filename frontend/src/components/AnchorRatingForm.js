@@ -8,14 +8,14 @@ import Dropzone from 'react-dropzone'
 
 
 const createRatingMutation = gql`
-mutation BoltRating($bolt_id: ID!, $token: String!, $rating: Int, $picture: String){
-  boltRating(bolt_id: $bolt_id, token: $token, rating: $rating, picture: $picture) {
+mutation AnchorRating($anchor_id: ID!, $token: String!, $rating: Int, $picture: String){
+  anchorRating(anchor_id: $anchor_id, token: $token, rating: $rating, picture: $picture) {
     picture
     rating
   }
 }`
 
-class RatingForm extends React.Component {
+class AnchorRatingForm extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -30,7 +30,7 @@ class RatingForm extends React.Component {
 
     let response = await this.props.mutate({
       variables: {
-        bolt_id: this.props.bolt_id,
+        anchor_id: this.props.anchor_id,
         token: this.props.token,
         rating: this.state.rating,
         picture: picture
@@ -53,4 +53,4 @@ class RatingForm extends React.Component {
   }
 }
 
-export default graphql(createRatingMutation)(RatingForm)
+export default graphql(createRatingMutation)(AnchorRatingForm)

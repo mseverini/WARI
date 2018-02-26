@@ -14,6 +14,7 @@ const listBolts = gql`query RouteQuery($route_id: ID!) {
       pitch
     }
     anchors{
+      id
       pitch
     }
   }

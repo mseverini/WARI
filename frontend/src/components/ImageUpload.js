@@ -5,12 +5,13 @@ class ImageUpload extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = { picture: props.picture}
     this.handleDrop = this.handleDrop.bind(this)
   }
 
   handleDrop(info) {
     let url = "https://s3.us-east-2.amazonaws.com/wari-development/user_uploads/"+info.file.name
-    this.props.picture = url
+    this.state.picture = url
     this.props.onUpload(url)
   }
 
@@ -19,8 +20,8 @@ class ImageUpload extends React.Component {
 
     return (
       <section>
-        {this.props.picture ?
-          <img src={this.props.picture} alt="image preview"/> :
+        {this.state.picture || this.props.picture ?
+          <img src={this.state.picture ? this.state.picture : this.props.picture} alt="image preview"/> :
           <DropzoneS3Uploader onFinish={this.handleDrop} s3Url={s3Url} upload={{uploadRequestHeaders:{}}} />
         }
       </section>

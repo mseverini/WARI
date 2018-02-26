@@ -25,7 +25,7 @@ class BoltList extends React.Component {
     for(let i=0; i < this.props.data.route.pitches; i++){
       routeElements[i] = []
       if (anchorIndex < this.props.data.route.anchors.length && this.props.data.route.anchors[anchorIndex].pitch == i ){
-        routeElements[i].push(<Anchor  key={'anchor'+anchorIndex} anchor={this.props.data.route.anchors[anchorIndex]} />)
+        routeElements[i].push(<Anchor  key={'anchor'+anchorIndex} anchor={this.props.data.route.anchors[anchorIndex]} anchor_id={this.props.data.route.anchors[anchorIndex].id} token={global.sessionStorage.getItem('token')}/>)
         anchorIndex ++
       }
       while(boltNumber < this.props.data.route.bolts.length && this.props.data.route.bolts[boltNumber].pitch == i){

@@ -1,5 +1,5 @@
 Types::AnchorType = GraphQL::ObjectType.define do
   name "Anchor"
-  field :ids, !types.ID
+  field :id, !types.ID
   field :pitch, !types.Int
 end

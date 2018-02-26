@@ -25,7 +25,7 @@ class BoltsController < ApplicationController
   # POST /bolts.json
   def create
     if bolt_params.number_of_bolts
-      byebug
+      #not what we want
     else
     @bolt = Bolt.new(bolt_params)
     end

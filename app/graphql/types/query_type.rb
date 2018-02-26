@@ -7,12 +7,27 @@ Types::QueryType = GraphQL::ObjectType.define do
     }
   end
 
+  field :anchor, Types::AnchorType do
+    resolve ->(obj, args, ctx) {
+      Anchor.all
+    }
+  end
+
   field :bolt_rating, Types::BoltRatingType do
     argument :token, !types.String
     argument :bolt_id, !types.ID
     resolve ->(obj, args, ctx) {
       user = User.where(confirmation_token: args['token'])
       BoltRating.where(user: user, bolt_id: args['bolt_id']).first
+    }
+  end
+
+  field :anchor_rating, Types::AnchorRatingType do
+    argument :token, !types.String
+    argument :anchor_id, !types.ID
+    resolve ->(obj, args, ctx) {
+      user = User.where(confirmation_token: args['token'])
+      AnchorRating.where(user: user, anchor_id: args['anchor_id']).first
     }
   end
 
