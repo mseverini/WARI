@@ -1,0 +1,12 @@
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+amazon:
+  service: S3
+  access_key_id: "AKIAIMRLNR4ECSKTRA6Q"
+  secret_access_key: "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"

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
 
   post "/graphql", to: "graphql#execute"
+  get "/s3/sign", to: "sign#sign"
   resources :anchors
   resources :bolts
   resources :climbing_routes do
