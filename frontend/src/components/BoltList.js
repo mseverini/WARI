@@ -16,28 +16,29 @@ class BoltList extends React.Component {
   }
 
   displayPitches() {
-    let boltNumber = 0
-    let anchorIndex = 0
+    let boltNumber = this.props.data.route.bolts.length-1
+    let anchorIndex = this.props.data.route.anchors.length-1
     let routeElements = Array(this.props.data.route.pitches)
 
     this.state.open = Array(this.props.data.route.pitches).fill(false)
 
-    for(let i=0; i < this.props.data.route.pitches; i++){
+    for(let i= this.props.data.route.pitches-1; i >= 0; i --){
+      debugger
       routeElements[i] = []
-      if (anchorIndex < this.props.data.route.anchors.length && this.props.data.route.anchors[anchorIndex].pitch == i ){
+      if (anchorIndex >= 0 && this.props.data.route.anchors[anchorIndex].pitch == i ){
         routeElements[i].push(<Anchor  key={'anchor'+anchorIndex} anchor={this.props.data.route.anchors[anchorIndex]} anchor_id={this.props.data.route.anchors[anchorIndex].id} token={global.sessionStorage.getItem('token')}/>)
-        anchorIndex ++
+        anchorIndex --
       }
-      while(boltNumber < this.props.data.route.bolts.length && this.props.data.route.bolts[boltNumber].pitch == i){
+      while(boltNumber >= 0 && this.props.data.route.bolts[boltNumber].pitch == i){
         routeElements[i].push(<Bolt key={'bolt'+boltNumber} bolt={this.props.data.route.bolts[boltNumber]} bolt_id={this.props.data.route.bolts[boltNumber].id} token={global.sessionStorage.getItem('token')}/>)
-        boltNumber ++
+        boltNumber --
       }
     }
 
     routeElements = routeElements.map((el, index) =>
-      <Collapsible key={'pitch'+index} trigger={(
-        <Button className="c-button" onClick={() => this.setState({open: !this.state.open[index]})}>
-          pitch {index + 1}
+      <Collapsible key={'pitch'+(routeElements.length - index)} trigger={(
+        <Button className="c-button" onClick={() => this.setState({open: !this.state.open[(routeElements.length - index)]})}>
+          pitch {routeElements.length - index}
         </Button>
       )} >
         <span> Remember: bolt 1 is closest to the ground </span>
