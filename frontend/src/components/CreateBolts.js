@@ -70,7 +70,7 @@ class CreateBolts extends React.Component {
           <div key={i}>
             <span>
               Does pitch {i+1} have bolted anchors?
-              <input style={{margin:( 0 + ' ' + 0 + ' ' + 0 + ' ' + 15+"px")}} type="checkbox" id={i} onChange={this.handleAnchorChange.bind(this)}/>
+              <input type="checkbox" id={i} onChange={this.handleAnchorChange.bind(this)}/>
             </span>
             <br/>
            <span>
