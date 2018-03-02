@@ -1,10 +1,8 @@
 import React from 'react'
 import Bolt from './Bolt'
 import Anchor from './Anchor'
-import Collapsible from 'react-collapsible'
 import CreateBolts from "./CreateBolts"
 import Pitch from './Pitch'
-import { Button } from 'react-bootstrap'
 
 class BoltList extends React.Component {
   constructor(props) {
@@ -39,25 +37,6 @@ class BoltList extends React.Component {
     }
 
     return pitchElements
-
-    // for(let j=)
-    //
-    // routeElements = routeElements.map((el, index) =>
-    //
-    //   <Collapsible key={'pitch'+(routeElements.length - index)} trigger={(
-    //     <Button className="c-button" onClick={() => this.setState({open: !this.state.open[(routeElements.length - index)]})}>
-    //       pitch {routeElements.length - index}
-    //     </Button>
-    //   )} >
-    //     <span> Remember: bolt 1 is closest to the ground </span>
-    //     {el}
-    //   </Collapsible>
-    // )
-    // return (
-    //   <div>
-    //     {routeElements}
-    //   </div>
-    // )
   }
 
   render() {
