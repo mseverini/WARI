@@ -12,7 +12,7 @@ function requireAuth(Component) {
     Component
 }
 
-const routes = (
+const Main = () => (
   <main>
     <Switch path="/" component={App} >
       <Route exact path="/" component={requireAuth(Area)}/>
@@ -24,4 +24,4 @@ const routes = (
   </main>
 )
 
-export default routes
+export default Main

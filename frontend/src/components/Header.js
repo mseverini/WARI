@@ -1,5 +1,4 @@
 import React from 'react'
-import Navigation from './Navigation'
 import logo from '../images/logo.jpg'
 
 const Header = props =>

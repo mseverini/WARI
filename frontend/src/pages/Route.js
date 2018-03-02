@@ -1,9 +1,9 @@
 import React from 'react'
 import CurrentRouteBoltList from '../containers/CurrentRouteBoltList'
 
-const ClimbingRoute = () =>
+const ClimbingRoute = (props) =>
   <main className="p-area">
-    <CurrentRouteBoltList />
+    <CurrentRouteBoltList {...props}/>
   </main>
 
 export default ClimbingRoute

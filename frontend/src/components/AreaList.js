@@ -26,13 +26,16 @@ const mapRoutes = (routes) => {
   return routes.map(route => <Route route={route} />);
 }
 
-const AreaList = (props) =>
-  <table className="c__list">
-    <thead />
-    <h2>{!props.data.loading ? props.data.area.name : null} </h2>
-    <tbody>
+const AreaList = (props) =>{
+  return (
+    <table className="c__list">
+      <thead />
+      <h2>{!props.data.loading ? props.data.area.name : null} </h2>
+      <tbody>
       {!props.data.loading ? mapAreas(props.data.area.children).concat(mapRoutes(props.data.area.climbing_routes)) : null}
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  )
+}
 
 export default graphql(listRoutes)(AreaList)

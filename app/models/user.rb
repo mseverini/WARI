@@ -5,6 +5,8 @@ class User < ApplicationRecord
   include ActiveModel::ForbiddenAttributesProtection
   include ActiveModel::SecurePassword
 
+  validates_uniqueness_of :email
+
   has_secure_password
   has_secure_token :confirmation_token
 

@@ -7,7 +7,7 @@ import SignUpForm from './SignUpForm'
 const signUpMutation = gql`
   mutation SignUpUser($credentials: AuthProviderCredentials) {
     createUser(credentials: $credentials)
-    {token user {name email}}
+    {token}
   }`
 
 
@@ -37,29 +37,25 @@ class SignUp extends React.Component {
   }
 
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault()
     const credentials = {
-      name: this.state.name,
       email: this.state.email,
       password: this.state.password,
     }
-    this.state.mutate({
+    let response = await this.state.mutate({
       variables: {
         credentials
       },
-    }).then(response => {
-      let token = response.data.createUser.token
-      global.sessionStorage.setItem('token', token)
-      this.setState({
-        loggedIn: true,
-      })
     })
+    global.sessionStorage.setItem('token', response.data.createUser.token)
+    debugger
+    this.setState({loggedIn: true})
   }
 
   render() {
     if (this.state.loggedIn) return <Redirect to="/"/>
-    return (<SignUpForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>)
+    return (<SignUpForm handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)}/>)
   }
 }
 

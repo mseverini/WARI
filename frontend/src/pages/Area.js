@@ -1,9 +1,9 @@
 import React from 'react'
 import CurrentAreaList from '../containers/CurrentAreaList'
 
-const AreaPage = () =>
+const AreaPage = (props) =>
   <main className="p-area">
-    <CurrentAreaList />
+    <CurrentAreaList {...props}/>
   </main>
 
 export default AreaPage
