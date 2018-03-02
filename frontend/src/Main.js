@@ -14,7 +14,7 @@ function requireAuth(Component) {
 
 const Main = () => (
   <main>
-    <Switch path="/" component={App} >
+    <Switch>
       <Route exact path="/" component={requireAuth(Area)}/>
       <Route path="/Area/:id" component={requireAuth(Area)} />
       <Route path="/SignIn" component={SignIn} />
