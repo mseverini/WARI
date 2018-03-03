@@ -1,5 +1,4 @@
 import React from 'react'
-import StarPicker from "./star-picker"
 import { Well } from 'react-bootstrap'
 import ImageUpload from './ImageUpload'
 import {graphql} from 'react-apollo'

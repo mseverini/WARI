@@ -67,14 +67,15 @@ class CreateBolts extends React.Component {
   render() {
     var pitches = this.state.pitches.map((_,i) => {
         return (
-          <div key={i}>
-            <span>
-              Does pitch {i+1} have bolted anchors?
-              <input type="checkbox" id={i} onChange={this.handleAnchorChange.bind(this)}/>
+          <div className='pitch-form' key={i}>
+            <span style={{ display: 'flex', 'justify-content': 'center'}}><h3>pitch {i+1}</h3></span>
+            <span style={{ display: 'flex', 'justify-content': 'center'}}>
+              <input type="checkbox" style={{width:'25px', height:'25px'}} id={i} onChange={this.handleAnchorChange.bind(this)}/>
+              pitch {i+1} has bolted anchors
             </span>
             <br/>
            <span>
-             How may bolts are there on pitch {i+1}
+             How many bolts are there on pitch {i+1} (this doesn't include anchors)
              <input style={{width:40+'px'}} id={i} name="pitches" type="text" onChange={this.handleChange.bind(this)} />
            </span>
             <br/><br/>
@@ -85,17 +86,20 @@ class CreateBolts extends React.Component {
 
     return(
       <div>
-        <h2> No one has entered bolting information yet!</h2>
+        <h3> No one has entered bolting information yet!</h3>
         <h3>Can you help?</h3>
-        <label htmlFor="pitches">How may pitches are there?</label>
+        <label htmlFor="pitches" style={{display:'inline'}}>How may pitches are there?</label>
         <input id="pitches" name="pitches" type="text" onChange={this.handlePitchChange.bind(this)} />
 
         {pitches}
 
+        <div style={{fontSize:'1rem', 'text-align':'center'}}>Please enter this carefully (It is kind of a bummer if this gets put in wrong)</div>
+        <span style={{ display: 'flex', 'justify-content': 'center'}}>
         {pitches.length ?
           <button onClick={this.handleSubmit.bind(this)}>Submit</button>
           : null
         }
+        </span>
       </div>
     )
   }

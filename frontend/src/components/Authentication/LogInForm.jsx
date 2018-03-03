@@ -11,8 +11,10 @@ const LogInForm = ({handleChange, handleSubmit, ...props}) => {
       <Form onSubmit={handleSubmit}>
         <FieldGroup {...props} id={'login-field-email'} name={'email'} label={'Email'} type={'email'} onChange={handleChange}/>
         <FieldGroup {...props} id={'login-field-password'} name={'password'} label={'Password'} onChange={handleChange}/>
-        <Button type={'submit'}>Log In</Button>
-        <Link to={'/SignUp'} style={{marginLeft:'15px'}}><Button>Sign Up</Button></Link>
+        <span className='center'>
+          <Button type={'submit'}>Log In</Button>
+          <Link to={'/SignUp'} style={{marginLeft:'15px'}}><Button>Sign Up</Button></Link>
+        </span>
       </Form>
     </Grid>
   )

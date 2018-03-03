@@ -3,6 +3,9 @@ import Bolt from './Bolt'
 import Anchor from './Anchor'
 import CreateBolts from "./CreateBolts"
 import Pitch from './Pitch'
+import {Button} from 'react-bootstrap'
+
+import Link from "./Link";
 
 class BoltList extends React.Component {
   constructor(props) {
@@ -35,7 +38,21 @@ class BoltList extends React.Component {
       }
       pitchElements.push(<Pitch pitch={i} bolts={pitchBolts}/>)
     }
-
+    pitchElements.push(
+      <div>
+        Are there actually a different number of bolts out there?
+        <span
+          onClick={()=>{this.setState({fixing:true})}}
+          style={{
+            width:'fit-content',
+            height: '40px',
+            'text-size': '11px',
+            cursor:'pointer',
+            'margin-left': '3px'
+          }}
+        >Fix Me</span>
+      </div>
+    )
     return pitchElements
   }
 
@@ -45,7 +62,7 @@ class BoltList extends React.Component {
         <div>
           <h2>{this.props.data.route.name} </h2>
           {
-            this.props.data.route.bolts == 0 && this.props.data.route.anchors == 0  ?
+            (this.props.data.route.bolts == 0 && this.props.data.route.anchors == 0 || this.state.fixing) ?
               <CreateBolts {...this.props}/> :
               this.displayPitches()
           }
