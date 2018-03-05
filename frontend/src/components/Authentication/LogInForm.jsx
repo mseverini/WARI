@@ -10,7 +10,7 @@ const LogInForm = ({handleChange, handleSubmit, ...props}) => {
     <Grid fluid={true}>
       <Form onSubmit={handleSubmit}>
         <FieldGroup {...props} id={'login-field-email'} name={'email'} label={'Email'} type={'email'} onChange={handleChange}/>
-        <FieldGroup {...props} id={'login-field-password'} name={'password'} label={'Password'} onChange={handleChange}/>
+        <FieldGroup {...props} id={'login-field-password'} type={'password'} name={'password'} label={'Password'} onChange={handleChange}/>
         <span className='center'>
           <Button type={'submit'}>Log In</Button>
           <Link to={'/SignUp'} style={{marginLeft:'15px'}}><Button>Sign Up</Button></Link>
