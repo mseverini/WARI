@@ -21,7 +21,7 @@ class Pitch extends React.Component {
           </Button>
         )} >
           <span> Remember: bolt 1 is closest to the ground </span>
-          {this.prs}
+          {this.props.bolts}
         </Collapsible>
       </div>
     )

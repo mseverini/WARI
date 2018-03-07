@@ -36,19 +36,19 @@ class BoltList extends React.Component {
         pitchBolts.push(<Bolt key={'bolt'+boltNumber} bolt={this.props.data.route.bolts[boltNumber]} bolt_id={this.props.data.route.bolts[boltNumber].id} token={global.sessionStorage.getItem('token')}/>)
         boltNumber --
       }
-      pitchElements.push(<Pitch pitch={i} bolts={pitchBolts}/>)
+      pitchElements.push(<Pitch key={'pitch'+i} pitch={i} bolts={pitchBolts}/>)
     }
     pitchElements.push(
-      <div>
+      <div key={'end'}>
         Are there actually a different number of bolts out there?
         <span
           onClick={()=>{this.setState({fixing:true})}}
           style={{
             width:'fit-content',
             height: '40px',
-            'text-size': '11px',
+            textSize: '11px',
             cursor:'pointer',
-            'margin-left': '3px'
+            marginLeft: '3px'
           }}
         >Fix Me</span>
       </div>
