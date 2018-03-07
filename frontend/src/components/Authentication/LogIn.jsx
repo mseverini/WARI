@@ -42,20 +42,29 @@ class LogIn extends React.Component {
       password: this.state.password,
     }
 
-    let response = await this.state.mutate({
+    this.state.mutate({
       variables: {
         credentials,
       },
+    }).then((response) => {
+      let token = response.data.loginUser.token
+      global.sessionStorage.setItem('token', token)
+      window.location.reload()
+    }).catch((error) => {
+      this.setState({error: error.graphQLErrors[0].message})
     })
 
-    let token = response.data.loginUser.token
-    global.sessionStorage.setItem('token', token)
-    window.location.reload()
+
   }
 
 
   render() {
-    return (<LogInForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>)
+    return (
+      <div>
+        <h2 className='center' style={{color:'red'}}>{this.state.error}</h2>
+        <LogInForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+      </div>
+    )
   }
 }
 

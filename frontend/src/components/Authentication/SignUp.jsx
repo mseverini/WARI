@@ -43,19 +43,26 @@ class SignUp extends React.Component {
       email: this.state.email,
       password: this.state.password,
     }
-    let response = await this.state.mutate({
+    this.state.mutate({
       variables: {
         credentials
       },
+    }).then((response) => {
+      global.sessionStorage.setItem('token', response.data.createUser.token)
+      this.setState({loggedIn: true})
+    }).catch((error) =>{
+      this.setState({error: error.graphQLErrors[0].message})
     })
-    global.sessionStorage.setItem('token', response.data.createUser.token)
-    debugger
-    this.setState({loggedIn: true})
   }
 
   render() {
     if (this.state.loggedIn) return <Redirect to="/"/>
-    return (<SignUpForm handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)}/>)
+    return (
+      <div>
+        <h2 className='center' style={{color:'red'}}>{this.state.error}</h2>
+        <SignUpForm handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)}/>
+      </div>
+    )
   }
 }
 
