@@ -10,7 +10,7 @@ class ImageUpload extends React.Component {
   }
 
   handleDrop(info) {
-    let url = "https://s3.us-east-2.amazonaws.com/wari-development/user_uploads/"+info.file.name
+    let url = "https://s3.us-east-2.amazonaws.com/wari-development/user_uploads/"+info.file.name.replace(/\s/g,'')
     this.state.picture = url
     this.props.onUpload(url)
   }
