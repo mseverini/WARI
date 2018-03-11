@@ -20,7 +20,7 @@ const state = window.__initialState__ || undefined
 const store = configureStore( state)
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: '/api/graphql/',
 });
 
 const authLink = setContext((_, { headers }) => {

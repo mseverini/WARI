@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: WARI_production
-  username: WARI
-  password: <%= ENV['WARI_DATABASE_PASSWORD'] %>
+  username: wari
+  password: postgres

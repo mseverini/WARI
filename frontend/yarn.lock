@@ -5680,6 +5680,16 @@ react-bootstrap@^0.32.1:
     uncontrollable "^4.1.0"
     warning "^3.0.0"
 
+react-collapse@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-collapse/-/react-collapse-4.0.3.tgz#b96de959ed0092a43534630b599a4753dd76d543"
+  dependencies:
+    prop-types "^15.5.8"
+
+react-collapsible@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-collapsible/-/react-collapsible-2.0.4.tgz#fb1761eda57599a045d602534e31cb23a6c3f52a"
+
 react-dev-utils@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.1.tgz#9f2763e7bafa1a1b9c52254d2a479deec280f111"

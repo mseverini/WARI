@@ -51,7 +51,8 @@ class LogIn extends React.Component {
       global.sessionStorage.setItem('token', token)
       window.location.reload()
     }).catch((error) => {
-      this.setState({error: error.graphQLErrors[0].message})
+      	debugger
+	this.setState({error: error.graphQLErrors[0].message})
     })
 
 

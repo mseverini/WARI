@@ -1,9 +1,9 @@
 {
   "name": "WARI",
   "version": "1.0.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "http://172.31.39.162:3000",
   "scripts": {
-    "start": "npm run build:css && (npm run watch:css & PORT=4000 react-scripts start)",
+    "start": "npm run build:css && (npm run watch:css & PORT=5000 react-scripts start)",
     "build": "npm run build:css && react-scripts build",
     "build:css": "node-sass-chokidar src/styles -o src/styles",
     "watch:css": "node-sass-chokidar src/styles -o src/styles --watch --recursive",
@@ -28,6 +28,7 @@
     "react-apollo": "2.0.4",
     "react-bootstrap": "^0.32.1",
     "react-collapse": "^4.0.3",
+    "react-collapsible": "^2.0.4",
     "react-dom": "^15.6.1",
     "react-dropzone": "^4.2.8",
     "react-dropzone-s3-uploader": "^1.1.0",
