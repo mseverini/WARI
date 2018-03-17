@@ -4,7 +4,7 @@ import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 import ForgotPasswordForm from './ForgotPasswordForm'
 
-const forgotPasswordMutation = gql`
+const ForgotPasswordMutation = gql`
   mutation ForgotPassword($email: String!) {
     forgotPassword(email: $email)
   }`
@@ -15,6 +15,7 @@ class ForgotPassword extends React.Component {
     super(props)
     this.state = {
       email: '',
+      sent: false,
       mutate: props.mutate,
     }
     this.handleChange = this.handleChange.bind(this)
@@ -40,22 +41,22 @@ class ForgotPassword extends React.Component {
         email:this.state.email,
       },
     }).then(() => {
-      <Redirect to="/"/>
+      this.setState({sent: true})
     }).catch((error) =>{
       this.setState({error: error.graphQLErrors[0].message})
     })
   }
 
   render() {
-    if (this.state.loggedIn) return <Redirect to="/"/>
+    if (this.state.sent) return <div>Check your email for the login code.</div>
     return (
       <div>
         <h2 className='center' style={{color:'red'}}>{this.state.error}</h2>
-        <ResetPasswordForm handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)}/>
+        <ForgotPasswordForm handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)}/>
       </div>
     )
   }
 }
 
-const ResetPasswordWithMutation = graphql(resetPasswordMutation)(ResetPassword)
-export default ResetPasswordWithMutation
+const ForgotPasswordWithMutation = graphql(ForgotPasswordMutation)(ForgotPassword)
+export default ForgotPasswordWithMutation
