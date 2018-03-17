@@ -5,8 +5,8 @@ import gql from 'graphql-tag'
 import ForgotPasswordForm from './ForgotPasswordForm'
 
 const forgotPasswordMutation = gql`
-  mutation ForgotPassword($email: email) {
-     forgotPassword(email: $email)
+  mutation ForgotPassword($email: String!) {
+    forgotPassword(email: $email)
   }`
 
 

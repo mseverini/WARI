@@ -41,4 +41,9 @@ class User < ApplicationRecord
     # pseudo random numbers with 16 bits has almost zero chance of have collisions
     self.confirmation_token = SecureRandom.urlsafe_base64(16)
   end
+
+  def generate_password_token
+    # pseudo random numbers with 16 bits has almost zero chance of have collisions
+    self.password_token = SecureRandom.urlsafe_base64(6)
+  end
 end
