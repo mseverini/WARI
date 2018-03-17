@@ -9,7 +9,7 @@ const ForgotPasswordForm = ({handleSubmit, handleChange, ...props}) => {
       <Form onSubmit={handleSubmit}>
         <FieldGroup {...props} id={'reset-password-field-email'} name={'email'} label={'Email'} placeholder={'Enter your email'} type={'email'} onChange={handleChange}/>
         <span className='center'>
-          <Button type={'submit'} style={{width:'fit-content'}}>Create User</Button>
+          <Button type={'submit'} style={{width:'fit-content'}}>Send Email</Button>
         </span>
       </Form>
     </Grid>

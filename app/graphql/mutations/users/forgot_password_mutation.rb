@@ -6,6 +6,7 @@ class Mutations::Users::ForgotPasswordMutation
       user.password_token = user.generate_password_token
       user.password_token_date = Time.now
       user.save
+      UserMailer.forgot_password_mailer(user).deliver_later
       true
     else
       true
