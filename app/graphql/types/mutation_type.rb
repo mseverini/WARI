@@ -10,6 +10,7 @@ Types::MutationType = GraphQL::ObjectType.define do
   field :loginUser, Types::AuthenticateType do
     description "Logs in a user"
     argument :credentials, Types::AuthProviderCredentialsType
+    resolve Mutations::Users::LoginUserMutation.new
   end
 
   field :forgotPassword, types.Boolean do
