@@ -5,8 +5,8 @@ import gql from 'graphql-tag'
 import ResetPasswordForm from './ResetPasswordForm'
 
 const resetPasswordMutation = gql`
-  mutation ResetPassword($code: code, $email: email, $password: password) {
-    ResetPassword(code: $code, email: $email, password: $password)
+  mutation ResetPassword($code: String!, $email: String!, $password: String!) {
+    resetPassword(code: $code, email: $email, password: $password)
     {token}
   }`
 
@@ -46,7 +46,7 @@ class ResetPassword extends React.Component {
         password: this.state.password,
       },
     }).then((response) => {
-      global.sessionStorage.setItem('token', response.data.createUser.token)
+      global.sessionStorage.setItem('token', response.data.resetPassword.token)
       this.setState({loggedIn: true})
     }).catch((error) =>{
       this.setState({error: error.graphQLErrors[0].message})
