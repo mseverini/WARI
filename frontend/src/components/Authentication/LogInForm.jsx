@@ -19,6 +19,7 @@ const LogInForm = ({handleChange, handleSubmit, ...props}) => {
             <Link to={'/SignUp'} style={{marginLeft:'15px'}}><Button>Sign Up</Button></Link>
           </span>
         </Form>
+        <p className='center' style={{marginTop:'15px'}}>Forgot your password?<Link to={'/forgotpassword'}>&nbsp;Click Here.</Link></p>
       </Grid>
     </div>
   )

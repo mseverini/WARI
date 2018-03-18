@@ -11,7 +11,7 @@ const ResetPasswordForm = ({handleSubmit, handleChange, ...props}) => {
         <FieldGroup {...props} id={'reset-password-field-email'} name={'email'} label={'Email'} placeholder={'Enter your email'} type={'email'} onChange={handleChange}/>
         <FieldGroup {...props} id={'reset-password-field-password'} name={'password'} label={'New Password'} type={'text'} onChange={handleChange}/>
         <span className='center'>
-          <Button type={'submit'} style={{width:'fit-content'}}>Create User</Button>
+          <Button type={'submit'} style={{width:'fit-content'}}>Update Password</Button>
         </span>
       </Form>
     </Grid>
