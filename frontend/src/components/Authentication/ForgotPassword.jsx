@@ -48,7 +48,7 @@ class ForgotPassword extends React.Component {
   }
 
   render() {
-    if (this.state.sent) return <div>Check your email for the login code.</div>
+    if (this.state.sent) return <div>Check your email for the login code. (remember to check your spam folder) </div>
     return (
       <div>
         <h2 className='center' style={{color:'red'}}>{this.state.error}</h2>
