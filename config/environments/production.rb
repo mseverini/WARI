@@ -61,7 +61,8 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "wari_#{Rails.env}"
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.perform_deliveries
+  config.action_mailer.perform_deliveries = true 
+  config.action_mailer.raise_delivery_errors = true 
   config.action_mailer.default_options = {from: 'no-reply@saltlakeclimbers.org'}
   config.action_mailer.perform_caching = false
 
