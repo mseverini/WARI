@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       post 'create_bolts'
     end
   end
+
+  resources :bolt_ratings, :only => [:index]
   resources :areas
 
   root 'areas#index'

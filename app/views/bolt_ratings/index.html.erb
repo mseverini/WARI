@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Ratings</h1>
+
+<table style="border: 1px solid black;">
+  <thead>
+  <tr>
+    <th style="border: 1px solid black;">Route</th>
+    <th style="border: 1px solid black;">Pitch</th>
+    <th style="border: 1px solid black;">Bolt Number</th>
+    <th style="border: 1px solid black;">Submitting User</th>
+    <th style="border: 1px solid black;">Rating</th>
+    <th style="border: 1px solid black;">Picture</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @bolt_ratings.each do |bolt_rating| %>
+    <tr>
+      <td style="border: 1px solid black;"><%= bolt_rating.bolt.climbing_route.name %></td>
+      <td style="border: 1px solid black;"><%= bolt_rating.bolt.pitch + 1%></td>
+      <td style="border: 1px solid black;"><%= bolt_rating.bolt.number + 1 %></td>
+      <td style="border: 1px solid black;"><%= bolt_rating.user.email %></td>
+      <td style="border: 1px solid black;"><%= bolt_rating.rating %></td>
+      <% if bolt_rating.picture.present? %>
+        <td style="border: 1px solid black;"><img src=<%=bolt_rating.picture%> style='height:100px;'></img></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

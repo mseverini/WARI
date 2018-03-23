@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem "graphql"
 
+gem "bootstrap-table-rails"
+
 gem 'bcrypt'
 
 gem "foreman"
