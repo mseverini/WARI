@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   resources :bolt_ratings, :only => [:index]
   resources :areas
 
-  root 'areas#index'
+  root 'bolt_ratings#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

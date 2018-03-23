@@ -2,7 +2,7 @@
 
 <h1>User Ratings</h1>
 
-<table style="border: 1px solid black;">
+<table style="border: 2px solid black;border-collapse:collapse;">
   <thead>
   <tr>
     <th style="border: 1px solid black;">Route</th>
@@ -22,9 +22,11 @@
       <td style="border: 1px solid black;"><%= bolt_rating.bolt.number + 1 %></td>
       <td style="border: 1px solid black;"><%= bolt_rating.user.email %></td>
       <td style="border: 1px solid black;"><%= bolt_rating.rating %></td>
-      <% if bolt_rating.picture.present? %>
-        <td style="border: 1px solid black;"><img src=<%=bolt_rating.picture%> style='height:100px;'></img></td>
-      <% end %>
+      <td style="border: 1px solid black;">
+        <% if bolt_rating.picture.present? %>
+          <img src=<%=bolt_rating.picture%> style='height:100px;'/>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>
