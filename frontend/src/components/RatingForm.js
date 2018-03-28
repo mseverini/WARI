@@ -51,12 +51,10 @@ class RatingForm extends React.Component {
   }
 
   render() {
-    if(this.state.picture)
-      debugger
     return (
       <div>
         <Well>
-          <EmojiRater onRate={this.onRate.bind(this)} rating={this.state.rating ? this.state.rating : this.props.rating}/>
+          <EmojiRater onRate={this.onRate.bind(this)} rating={typeof this.state.rating != "undefined" ? this.state.rating : this.props.rating}/>
           <br/>
           <ImageUpload onUpload={this.onUpload.bind(this)} picture={this.state.picture ? this.state.picture : this.props.picture}/>
         </Well>
