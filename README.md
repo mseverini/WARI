@@ -6,5 +6,3 @@ Schema:
   anchors
   users
   routes
-
-
