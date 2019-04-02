@@ -6,3 +6,6 @@ Schema:
   anchors
   users
   routes
+
+
+this app uses Graphql!
