@@ -10,4 +10,3 @@ Schema:
 
 this app uses Graphql!
 
-
